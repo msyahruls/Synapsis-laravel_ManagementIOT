@@ -20,3 +20,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->name('dashboard');
+
+// Route::group(['middleware' => 'auth'], function () {
+
+// 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+// 	Route::resource('category', 'CategoryController');
+// 	Route::resource('category', 'CategoryController');
+// 	Route::resource('product', 'ProductController');
+// });
+
+Route::Resources([
+    'users' => 'UserController',
+    'devices' => 'DeviceController',
+    'sensors' => 'SensorController'
+]);
