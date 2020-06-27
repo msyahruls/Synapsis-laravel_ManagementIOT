@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::apiResource('api/logs', 'API\DeviceLogController');
+
+// Route::get('logs', function() {
+//     return response()->json(['success' => 'Hello!']);
+// });
+
+Route::apiResource('logs', 'API\DeviceLogController');
