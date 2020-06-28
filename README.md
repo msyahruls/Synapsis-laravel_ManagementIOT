@@ -6,6 +6,7 @@
 * Text Editor ([Atom](https://atom.io/), [Sublime](https://www.sublimetext.com/), [Notepad++](https://notepad-plus-plus.org/downloads/)) to edit `.env`
 * Browser ([Google Chrome](https://www.google.com/chrome/), [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/), [Microsoft Edge](https://www.microsoft.com/en-us/edge), [Safari](https://www.apple.com/id/safari/)) to open Project
 * [Postman](https://www.postman.com/) to check API
+* Internet connection for Install and Update Composer
 
 ### How to Install
 1. Clone this project to local
@@ -22,8 +23,10 @@ DB_PASSWORD=
 ```
 5. Open Command Prompt/Terminal to project directory and type this in order:
 	- `composer install` to Install composer for the project
+	- `composer update` to Update composer for the project (*)optional
 	- `php artisan migrate` to Migrate(creating table and field) database
 	- `php artisan db:seed` to Seed(inserting data) database with dummy data
+	- `php artisan key:generate` to Generate Laravel key
 
 ### How to Run in Web
 1. Open Command Prompt/Terminal to project directory and type this:
