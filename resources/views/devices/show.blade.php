@@ -5,7 +5,7 @@
 		<h3 class="page-title">
 			<a href="{{ route('devices.index') }}" class="page-title-icon bg-gradient-primary">
 				<span class="page-title-icon bg-gradient-primary text-white mr-2">
-					<i class="mdi mdi-contacts"></i>
+					<i class="mdi mdi-watch"></i>
 				</span>
 			</a> Show Device
 		</h3>

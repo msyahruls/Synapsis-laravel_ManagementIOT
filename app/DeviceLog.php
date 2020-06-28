@@ -25,15 +25,15 @@ class DeviceLog extends Model
     ];
 
     public function user(){
-    	return $this->belongsTo('App\User','user','id');
+    	return $this->belongsTo('App\User','dl_user','email');
     }
 
     public function device(){
-    	return $this->belongsTo('App\Device','device','id');
+    	return $this->belongsTo('App\Device','dl_device','device_credential');
     }
 
     public function sensor(){
-    	return $this->belongsTo('App\Sensor','sensor','id');
+    	return $this->belongsTo('App\Sensor','dl_sensor','sensor_credential');
     }
 
 }

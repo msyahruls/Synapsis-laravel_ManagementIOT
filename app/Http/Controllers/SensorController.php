@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\User;
 use App\Device;
 use App\Sensor;
+use App\DeviceLog;
 
 class SensorController extends Controller
 {
@@ -78,7 +79,9 @@ class SensorController extends Controller
 		 */
 		public function show(Sensor $sensor)
 		{
-		    return view('sensors.show',compact('sensor'));
+			$logs = DeviceLog::whereDl_sensor($sensor->sensor_credential)
+					->orderBy('created_at','desc')->paginate(10);
+			return view('sensors.show',compact('sensor','logs'));
 		}
 
 		/**

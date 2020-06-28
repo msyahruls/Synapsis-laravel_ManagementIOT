@@ -5,7 +5,7 @@
 		<h3 class="page-title">
 			<a href="{{ route('sensors.index') }}" class="page-title-icon bg-gradient-primary">
 				<span class="page-title-icon bg-gradient-primary text-white mr-2">
-					<i class="mdi mdi-contacts"></i>
+					<i class="mdi mdi-chart-bar"></i>
 				</span>
 			</a> Show Sensor
 		</h3>
@@ -64,6 +64,31 @@
 								<div class="input-group-append">
 									<a href="{{ route('users.show', $sensor->device->user->id) }}" class="btn btn-sm btn-gradient-primary"><button class="btn btn-sm btn-gradient-primary" type="button"><i class="mdi mdi-contacts"></i></button></a>
 								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="" class="col-sm-3 col-form-label">Last Activity</label>
+						<div class="col-sm-9">
+							<div class="table-responsive table-bordered">
+								<table class="table">
+									<tbody>
+										<tr>
+											<th width="15%"> Created at </th>
+											<th> Value </th>
+										</tr>
+										@forelse ($logs as $log)
+											<tr>
+												<td>{{ $log->created_at }}</td>
+												<td>{{ $log->dl_value }} {{ $sensor->sensor_unit }}</td>
+											</tr>
+										@empty
+											<tr>
+												<td colspan="4"><center>Empty Data</center></td>
+											</tr>
+										@endforelse
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

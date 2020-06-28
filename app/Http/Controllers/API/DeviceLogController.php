@@ -27,21 +27,33 @@ class DeviceLogController extends Controller
      */
     public function store(Request $request)
     {
-    	// $data = $request->getContent();
-    	$data = json_decode($request->getContent(), true);
+			// Input JSON should be this way:
+			//[
+			//	{"user":"email","device":"device_credential","sensor":"sensor_credential","value":10},
+			//	{"user":"admin@ad.min","device":"zDwcZPvEdX8iiwNG","sensor":"Bk0PHjHn0DvGGwfc","value":5}
+			//]
+			// $data = $request->getContent();
+			$data = json_decode($request->getContent(), true);
+			$i = 0;
 			foreach ($data as $dl) {
 				$user = $dl['user'];
 				$device = $dl['device'];
 				$sensor = $dl['sensor'];
 				$value = $dl['value'];
-				DeviceLog::create([
-					'dl_user' => $user,
-					'dl_device' => $device,
-					'dl_sensor' => $sensor,
-					'dl_value' => $value
-				]);
+
+				try {
+					$response[$i++] = DeviceLog::create([
+						'dl_user' => $user,
+						'dl_device' => $device,
+						'dl_sensor' => $sensor,
+						'dl_value' => $value
+					]);
+				} catch (\Illuminate\Database\QueryException $exception) {
+					// You can check get the details of the error using `errorInfo`:
+					$response[$i] = $exception->errorInfo;
+				}
 			}
-			return $data;
+			return $response;
 
 			//SORRY, this is just for reminder, THANKS
 			// return json_decode($request);

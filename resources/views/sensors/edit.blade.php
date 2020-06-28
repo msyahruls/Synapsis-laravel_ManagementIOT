@@ -5,7 +5,7 @@
 		<h3 class="page-title">
 			<a href="{{ route('sensors.index') }}" class="page-title-icon bg-gradient-primary">
 				<span class="page-title-icon bg-gradient-primary text-white mr-2">
-					<i class="mdi mdi-contacts"></i>
+					<i class="mdi mdi-chart-bar"></i>
 				</span>
 			</a> Edit Sensor
 		</h3>
